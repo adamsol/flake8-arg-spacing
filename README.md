@@ -1,6 +1,8 @@
 flake8-arg-spacing
 ==================
 
+[![pypi](https://img.shields.io/pypi/v/flake8-arg-spacing.svg)](https://pypi.org/project/flake8-arg-spacing/)
+
 When applying the standard formatting rules of Python, it's easy to end up with code like below,
 where spacing obscures the actual operator precedence:
 
