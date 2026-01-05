@@ -39,12 +39,12 @@ class ArgSpacingChecker:
                 if node.arg is not None and self._should_report(node, node.value):
                     yield self._get_info(node.value, 101, "keyword argument")
 
-            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                pos_args = node.args.posonlyargs + node.args.args
-                pos_defaults = node.args.defaults
+            if isinstance(node, ast.arguments):
+                pos_args = node.posonlyargs + node.args
+                pos_defaults = node.defaults
                 pos_defaults_index = len(pos_args) - len(pos_defaults)
-                kw_args = node.args.kwonlyargs
-                kw_defaults = node.args.kw_defaults
+                kw_args = node.kwonlyargs
+                kw_defaults = node.kw_defaults
 
                 for arg, default in chain(zip(pos_args[pos_defaults_index:], pos_defaults), zip(kw_args, kw_defaults)):
                     if default is not None and self._should_report(arg, default):

@@ -21,7 +21,7 @@ from flake8_arg_spacing import ArgSpacingChecker
 ])
 @pytest.mark.parametrize('main_template, error_code', [
     ('f({})', 101),
-    ('def f({}): pass', 102),
+    ('lambda {}: a + b', 102),
     ('async def f({}): pass', 102),
 ])
 def test_checker(arg, should_report, inner_template, main_template, error_code):
@@ -30,6 +30,10 @@ def test_checker(arg, should_report, inner_template, main_template, error_code):
             pytest.skip("Type annotation doesn't make sense for function calls")
         if ', /' in inner_template:
             pytest.skip("Positional-only syntax doesn't make sense for function calls")
+
+    if main_template.startswith('lambda'):
+        if 'x:' in arg:
+            pytest.skip("Type annotation doesn't work in lambda definitions")
 
     source = main_template.format(inner_template.format(arg))
     extra_newlines = '\n' * (len(arg) - 3)
