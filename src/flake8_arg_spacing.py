@@ -23,7 +23,7 @@ class ArgSpacingChecker:
             return value_node.left.end_col_offset + 3 <= value_node.right.col_offset
         else:
             # Assume these are always written with spaces.
-            return isinstance(value_node, (ast.BoolOp, ast.Compare, ast.IfExp))
+            return isinstance(value_node, (ast.Await, ast.BoolOp, ast.Compare, ast.IfExp))
 
     def _get_info(self, node, error_code, label):
         return (

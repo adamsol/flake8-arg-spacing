@@ -6,7 +6,7 @@ from flake8_arg_spacing import ArgSpacingChecker
 
 
 @pytest.mark.parametrize('arg, should_report', [
-    ('x=- a', True), ('x=not a', True), ('x=a + b', True), ('x=a and b', True), ('x=a <= b', True), ('x=a if b else c', True),
+    ('x=- a', True), ('x=not a', True), ('x=await f()', True), ('x=a + b', True), ('x=a and b', True), ('x=a <= b', True), ('x=a if b else c', True),
     ('x=-a', False), ('x=a+b', False), ('x=a**b', False), ('x=a', False), ('x=(a + b)', False), ('x=f(a, b)', False), ('x=lambda: a', False),
     ('x = a + b', False), ('x: int', False), ('x: int = a + b', False)
 ])
