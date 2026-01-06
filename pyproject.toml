@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "flake8-arg-spacing"
 description = "Flake8 plugin that checks against poor spacing around the equals sign in function arguments."
-version = "1.0.0"
+version = "1.1.0"
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.9"
